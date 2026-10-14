@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fire Weather Index Prediction</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="card-title mb-0">Input Features</h3>
+                    </div>
+                    <div class="card-body">
+                        <form action="/predict" method="POST">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="Temprature" class="form-label">Temperature (°C)</label>
+                                    <input type="number" step="any" class="form-control" id="Temprature" name="Temprature" placeholder="e.g. 29.0" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="RH" class="form-label">Relative Humidity (RH %)</label>
+                                    <input type="number" step="any" class="form-control" id="RH" name="RH" placeholder="e.g. 57.0" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="WS" class="form-label">Wind Speed (WS km/h)</label>
+                                    <input type="number" step="any" class="form-control" id="WS" name="WS" placeholder="e.g. 18.0" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="Rain" class="form-label">Rain (mm)</label>
+                                    <input type="number" step="any" class="form-control" id="Rain" name="Rain" placeholder="e.g. 0.0" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="FFMC" class="form-label">FFMC Index</label>
+                                    <input type="number" step="any" class="form-control" id="FFMC" name="FFMC" placeholder="e.g. 65.7" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="DMC" class="form-label">DMC Index</label>
+                                    <input type="number" step="any" class="form-control" id="DMC" name="DMC" placeholder="e.g. 3.4" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="ISI" class="form-label">ISI Index</label>
+                                    <input type="number" step="any" class="form-control" id="ISI" name="ISI" placeholder="e.g. 1.3" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="Classes" class="form-label">Classes</label>
+                                    <input type="number" step="any" class="form-control" id="Classes" name="Classes" placeholder="e.g. 0 or 1" required>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="Region" class="form-label">Region</label>
+                                    <input type="number" step="any" class="form-control" id="Region" name="Region" placeholder="e.g. 0 or 1" required>
+                                </div>
+                            </div>
+
+                            <div class="mt-4 text-center">
+                                <button type="submit" class="btn btn-primary btn-lg w-100">Predict</button>
+                            </div>
+                        </form>
+
+                        {% if result %}
+                        <div class="alert alert-info text-center mt-4" role="alert">
+                            <h4>Prediction Result: {{ result }}</h4>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
